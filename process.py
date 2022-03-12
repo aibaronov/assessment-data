@@ -29,5 +29,12 @@ def sales_reports(log_file):
             print(line)
 
 
+def melon_order(log_file):
+    for line in log_file:
+        stripped = line.rstrip().split(' ')
+        if (int(stripped[2]) > 10):
+            print(stripped)
 
-sales_reports(log_file)
+# sales_reports(log_file)
+
+melon_order(log_file)
