@@ -235,16 +235,7 @@ module.exports = {
             res.sendStatus(200)
         }).catch(err => console.log('error seeding DB', err))
     },
-    deleteCity: (req, res) =>{
-        let {id} = req.params;
-        console.log(id);
-        sequelize.query(`
-        DELETE FROM cities
-        WHERE city_id = ${id};`)
-        .then(dbRes => res.status(200).send(dbRes[0]))
-        .catch(err => console.log(err));
 
-    },
     getCountries: (req, res) => {
         sequelize.query(`
         SELECT * FROM countries;`)
@@ -270,6 +261,16 @@ module.exports = {
         ORDER BY rating DESC;`)
         .then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log(err));
+    },
+    deleteCity: (req, res) =>{
+        let {id} = req.params;
+        console.log(id);
+        sequelize.query(`
+        DELETE FROM cities
+        WHERE city_id = ${id};`)
+        .then(dbRes => res.status(200).send(dbRes[0]))
+        .catch(err => console.log(err));
+
     }
 
 }
